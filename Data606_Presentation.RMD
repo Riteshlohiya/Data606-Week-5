@@ -1,0 +1,73 @@
+---
+title: "Data606 Presentation Question 5.5"
+author: "Ritesh_Lohiya"
+date: "3/24/2018"
+output: html_document
+---
+
+A 95% confidence interval for a population mean is given as (18.985, 21.015). This confidence
+interval is based on a simple random sample of 36 observations. Calculate the sample mean and
+standard deviation. Assume that all conditions necessary for inference are satisfied. Use the
+t-distribution in any calculations.
+
+
+            Lower (18.985)                    Upper (21.015)
+          -------------------------|-------------------------
+
+Solution:
+
+UpperBound of Confidence Interval = UB = 21.015
+
+LowerBound of Confidence Interval = LB = 18.985
+
+Sample Mean:
+
+Sample_Mean <- (UB + LB)/2
+
+```{r}
+UB <- 21.015
+LB <- 18.985
+Sample_Mean <- (UB + LB)/2
+Sample_Mean
+```
+
+Margin of Error:
+
+(UB - LB)/2
+
+```{r}
+Margin_of_Error <- (UB - LB)/2
+Margin_of_Error
+```
+
+Degree of Freedom and T-score:
+
+```{r}
+Df <- 36 - 1
+T35 <- qt(.95,Df)
+T35
+```
+
+Standard Deviation:
+
+```{r}
+Sd <- ((Margin_of_Error/T35)*sqrt(36))
+Sd
+```
+
+Validate Results:
+
+
+```{r}
+UB_Val <- 20 + 1.689572 * 3.604462 / sqrt(36)
+UB_Val
+```
+
+```{r}
+LB_Val <- 20 - 1.689572 * 3.604462 / sqrt(36)
+LB_Val
+```
+
+UB = UB_Val
+
+LB = LB_Val
